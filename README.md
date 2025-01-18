@@ -8,7 +8,7 @@
 - todo page on `/todos` get a single todo on `/todos/:id` were `:id` is the id after you've created a todo on the `/todos` page then finally `/todos/search` for searching for your created todo with any occurrence
 - `NOTE:` the application depends on `htmx.min.js` in the static folder.
 
-## 2. To run chat
+## 2. To run chat message
 
 - run `bun run dev`
 - then go to `/chat` to create a user
