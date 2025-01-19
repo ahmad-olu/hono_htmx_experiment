@@ -13,4 +13,10 @@
 - run `bun run dev`
 - then go to `/chat` to create a user
 - api dependence include `/api/chat/ws` and `/api/chat/messages`
-- `NOTE:` the application depends on `htmx.min.js`, `htmx.ws.js`, `chat-style.css` -> to style the page and finally `chat-js.js` -> to filer out unnessary massage the ui. and all the files can be found in the static folder.
+- `NOTE:` the application depends on `htmx.min.js`, `htmx.ws.js`, `chat-style.css` -> to style the page and finally `chat-js.js` -> to place the right chat message bubble in the right place. and all the files can be found in the static folder.
+
+## 3. To run traffic light simulation
+
+- run `bun run dev`
+
+### Not completed

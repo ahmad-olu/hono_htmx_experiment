@@ -44,21 +44,18 @@ const ChatMessagePage: FC<{ name: string }> = (props: { name: string }) => {
           class="chat-container"
           hx-swap-oob="beforeend"
         ></div>
-        <form id="form" class="input-container">
+        <form
+          id="form"
+          class="input-container"
+          hx-vals={`{"name": "${props.name}" }`}
+          ws-send
+        >
           <input
             type="text"
             placeholder="Type a message..."
             name="chat_message"
           />
-          <button
-            hx-vals={`{"name": "${props.name}" }`}
-            hx-post="/api/chat/messages"
-            hx-target="#conversation"
-            hx-swap="beforeend"
-            hx-include="#form"
-          >
-            Send
-          </button>
+          <button>Send</button>
         </form>
       </div>
     </Layout>
@@ -83,3 +80,35 @@ chat.get("/chat", (c) => {
 });
 
 export default chat;
+
+//? ----------------old implementation
+// const ChatMessagePage: FC<{ name: string }> = (props: { name: string }) => {
+//   return (
+//     <Layout>
+//       <div hx-ext="ws" ws-connect={`/api/chat/ws`} class="chat-container">
+//         <h1 style="text-align: center">{props.name}</h1>
+//         <div
+//           id="conversation"
+//           class="chat-container"
+//           hx-swap-oob="beforeend"
+//         ></div>
+//         <form id="form" class="input-container">
+//           <input
+//             type="text"
+//             placeholder="Type a message..."
+//             name="chat_message"
+//           />
+//           <button
+//             hx-vals={`{"name": "${props.name}" }`}
+//             hx-post="/api/chat/messages"
+//             hx-target="#conversation"
+//             hx-swap="beforeend"
+//             hx-include="#form"
+//           >
+//             Send
+//           </button>
+//         </form>
+//       </div>
+//     </Layout>
+//   );
+// };

@@ -20,39 +20,9 @@ const server = Bun.serve({
 
 app.use("/static/*", serveStatic({ root: "./" }));
 
-app
-  .get("/", (c) => {
-    return c.text("Hello Hono!");
-  })
-  .post("/api/chat/messages", async (c) => {
-    const body = await c.req.formData();
-    const data = {
-      name: body.get("name") as string,
-      chatMessage: body.get("chat_message") as string,
-    };
-
-    const htmlForOthers = `
-      <div id="conversation" hx-swap-oob="beforeend">
-        <div class="message other" data-sender="other">
-          <div class="sender">${data.name}</div>
-          <p>${data.chatMessage}</p>
-        </div>
-      </div>
-    `;
-
-    server.publish(topic, htmlForOthers);
-
-    const htmlForCurrentUser = `
-      <div id="conversation" hx-swap-oob="beforeend">
-        <div class="message user" data-sender="current">
-          <div class="sender">You</div>
-          <p>${data.chatMessage}</p>
-        </div>
-      </div>
-    `;
-    return c.html(htmlForCurrentUser);
-    //return c.json(todo);
-  });
+app.get("/", (c) => {
+  return c.text("Hello Hono!");
+});
 
 //ws://localhost:3000/api/chat/ws
 //{"chat_message":"jjj","name":"aaa"}
@@ -61,15 +31,18 @@ chat_api.get(
   "/api/chat/ws",
   upgradeWebSocket((c) => {
     return {
-      onMessage(_event, _ws) {
-        //     const html = `
-        //   <div id="conversation" hx-swap-oob="beforeend">
-        //     <div class="message other">
-        //       <div class="sender">${name}</div>
-        //       <p>${chat_message}</p>
-        //     </div>
-        //   </div>
-        // `;
+      onMessage(event, _ws) {
+        const { chat_message, name } = JSON.parse(event.data.toString());
+        const html = `
+          <div id="conversation" hx-swap-oob="beforeend">
+            <div class="message other" data-sender="other">
+              <div class="sender">${name}</div>
+              <p>${chat_message}</p>
+            </div>
+          </div>
+        `;
+
+        server.publish(topic, html);
         // ws.send(html);
       },
       onOpen: (_event, ws) => {
@@ -93,6 +66,37 @@ app.route("/", chat_api);
 export default app;
 
 //traffic light simulation
-// what multiplayer
-//login in / logout/ user auth.
-// mini chat app
+//wot multiplayer
+//login in / logout/ user auth / profile page.
+// graph, pie chart, bar chart and data
+
+//? -----------------> old implementation
+//   .post("/api/chat/messages", async (c) => {
+//     const body = await c.req.formData();
+//     const data = {
+//       name: body.get("name") as string,
+//       chatMessage: body.get("chat_message") as string,
+//     };
+
+//     const htmlForOthers = `
+//       <div id="conversation" hx-swap-oob="beforeend">
+//         <div class="message other" data-sender="other">
+//           <div class="sender">${data.name}</div>
+//           <p>${data.chatMessage}</p>
+//         </div>
+//       </div>
+//     `;
+
+//     server.publish(topic, htmlForOthers);
+
+//     const htmlForCurrentUser = `
+//       <div id="conversation" hx-swap-oob="beforeend">
+//         <div class="message user" data-sender="current">
+//           <div class="sender">You</div>
+//           <p>${data.chatMessage}</p>
+//         </div>
+//       </div>
+//     `;
+//     return c.html(htmlForCurrentUser);
+//     //return c.json(todo);
+//   });
