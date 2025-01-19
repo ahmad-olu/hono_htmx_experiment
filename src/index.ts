@@ -1,10 +1,12 @@
 import { Hono } from "hono";
 import { createBunWebSocket, serveStatic } from "hono/bun";
-import { todos_api } from "./routes/api/todos";
-import todos from "./routes/pages/todos";
-import chat from "./routes/pages/chat/chat-page";
-import { chat_api } from "./routes/api/chat";
+import { todos_api } from "./routes/api/1todos";
+import todos from "./routes/pages/1todos";
+import chat from "./routes/pages/2chat-page";
+import { chat_api } from "./routes/api/2chat";
 import { ServerWebSocket } from "bun";
+import traffic_light from "./routes/pages/3traffic-light-page";
+import { traffic_light_api } from "./routes/api/3traffic-light";
 
 export const { upgradeWebSocket, websocket } =
   createBunWebSocket<ServerWebSocket>();
@@ -62,6 +64,8 @@ app.route("/", todos_api);
 app.route("/", todos);
 app.route("/", chat);
 app.route("/", chat_api);
+app.route("/", traffic_light);
+app.route("/", traffic_light_api);
 
 export default app;
 
@@ -69,6 +73,7 @@ export default app;
 //wot multiplayer
 //login in / logout/ user auth / profile page.
 // graph, pie chart, bar chart and data
+// mini e-commerce sight
 
 //? -----------------> old implementation
 //   .post("/api/chat/messages", async (c) => {

@@ -6,7 +6,7 @@
 - then run `bun run dev`
 - todo apis on `/api/todos` include `GET`, `POST`, `PATCH`, `DELETE`. but they all return html not json.
 - todo page on `/todos` get a single todo on `/todos/:id` were `:id` is the id after you've created a todo on the `/todos` page then finally `/todos/search` for searching for your created todo with any occurrence
-- `NOTE:` the application depends on `htmx.min.js` in the static folder.
+- `NOTE:` the application depends on `htmx.min.js` in the static folder and `pocket base`.
 
 ## 2. To run chat message
 
@@ -18,5 +18,13 @@
 ## 3. To run traffic light simulation
 
 - run `bun run dev`
+- then go to `/traffic_light` to see simulation
+- api dependencies include `/api/traffic_light/time` and `/api/traffic_light?light=1&style=top:140px;left:500px;`
+- `NOTE:` the application depends on `htmx.min.js` in the static folder.
+
+## 4. Mini E-Commerce application
+
+- run `bun run dev`
+- `NOTE:` the application depends on `htmx.min.js` in the static folder and `pocket base`.
 
 ### Not completed
