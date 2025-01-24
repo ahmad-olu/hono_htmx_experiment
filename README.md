@@ -31,6 +31,6 @@
 
 ## 5. Auth Text
 
-- run `bun run dev`
+- run `bun run dev`.
 
 ### Not completed
