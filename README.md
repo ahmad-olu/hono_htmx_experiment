@@ -24,7 +24,13 @@
 
 ## 4. Mini E-Commerce application
 
+- install pocket base then `pocketbase serve` for products
 - run `bun run dev`
-- `NOTE:` the application depends on `htmx.min.js` in the static folder and `pocket base`.
+- also make sure to have a paystack account and import `PAY_STACK_SECRET_KEY` into your `src/lib/routes/api/4mini-ecommerce.ts` page
+- `NOTE:` the application depends on`mini-commerce.js`, `mini-commerce-bucket.js` and `htmx.min.js` in the static folder and `pocket base`.
+
+## 5. Auth Text
+
+- run `bun run dev`
 
 ### Not completed

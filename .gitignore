@@ -2,3 +2,4 @@
 node_modules/
 pb_data/
 pb_migrations/
+src/lib/env/

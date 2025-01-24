@@ -4,6 +4,9 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
+    "@paystack/inline-js": "^2.22.1",
+    "@types/paystack__inline-js": "^1.0.1",
+    "axios": "^1.7.9",
     "hono": "^4.6.16",
     "pocketbase": "^0.25.0"
   },

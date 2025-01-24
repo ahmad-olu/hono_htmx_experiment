@@ -7,6 +7,10 @@ import { chat_api } from "./routes/api/2chat";
 import { ServerWebSocket } from "bun";
 import traffic_light from "./routes/pages/3traffic-light-page";
 import { traffic_light_api } from "./routes/api/3traffic-light";
+import { mini_e_commerce_api } from "./routes/api/4mini-ecommerce";
+import mini_commerce from "./routes/pages/4mini-ecommerce-page";
+import { auth_5 } from "./routes/pages/5auth-page";
+import { auth_test_api } from "./routes/api/5auth";
 
 export const { upgradeWebSocket, websocket } =
   createBunWebSocket<ServerWebSocket>();
@@ -66,14 +70,16 @@ app.route("/", chat);
 app.route("/", chat_api);
 app.route("/", traffic_light);
 app.route("/", traffic_light_api);
+app.route("/", mini_e_commerce_api);
+app.route("/", mini_commerce);
+app.route("/", auth_test_api);
+app.route("/", auth_5);
 
 export default app;
 
-//traffic light simulation
 //wot multiplayer
 //login in / logout/ user auth / profile page.
 // graph, pie chart, bar chart and data
-// mini e-commerce sight
 
 //? -----------------> old implementation
 //   .post("/api/chat/messages", async (c) => {
